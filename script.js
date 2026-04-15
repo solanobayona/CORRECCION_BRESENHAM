@@ -46,3 +46,6 @@ function agregarFila(x, y, err) {
     let tabla = document.getElementById("tabla");
     tabla.innerHTML += `<tr><td>${x}</td><td>${y}</td><td>${err}</td></tr>`;
 }
+function dibujar() {
+    limpiarTabla();
+}
