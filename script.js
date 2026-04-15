@@ -56,3 +56,6 @@ function dibujarEjes() {
         ctx.fillText(i, 0, 400 - i);
     }
 }
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+dibujarEjes();
+bresenham(x0, y0, x1, y1, plot);
