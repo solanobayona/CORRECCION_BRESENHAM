@@ -38,3 +38,7 @@ function dibujar() {
 
     bresenham(x0, y0, x1, y1, plot);
 }
+function limpiarTabla() {
+    let tabla = document.getElementById("tabla");
+    tabla.innerHTML = "<tr><th>x</th><th>y</th><th>err</th></tr>";
+}
