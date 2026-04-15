@@ -50,3 +50,9 @@ function dibujar() {
     limpiarTabla();
 }
 agregarFila(x0, y0, err);
+function dibujarEjes() {
+    for (let i = 0; i <= 400; i += 50) {
+        ctx.fillText(i, i, 395);
+        ctx.fillText(i, 0, 400 - i);
+    }
+}
