@@ -49,3 +49,4 @@ function agregarFila(x, y, err) {
 function dibujar() {
     limpiarTabla();
 }
+agregarFila(x0, y0, err);
