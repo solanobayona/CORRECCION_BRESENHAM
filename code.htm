@@ -2,20 +2,83 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Bresenham</title>
+    <title>Bresenham Visualizer PRO</title>
+    <style>
+        /* Centrado absoluto en pantalla */
+        body { 
+            background: #121212; 
+            color: #eee; 
+            font-family: 'Segoe UI', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0;
+        }
+        .main-container {
+            display: flex;
+            gap: 30px;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 95vw;
+        }
+        .panel { width: 280px; display: flex; flex-direction: column; }
+        h2 { color: #00e676; margin-top: 0; font-size: 1.2rem; }
+        
+        /* Inputs y Botón */
+        .input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        label { font-size: 11px; color: #888; text-transform: uppercase; grid-column: span 2; }
+        input { 
+            background: #2d2d2d; border: 1px solid #444; color: #fff; 
+            padding: 8px; border-radius: 5px; outline: none; text-align: center;
+        }
+        input:focus { border-color: #00e676; }
+        button { 
+            background: #00e676; color: #000; border: none; padding: 12px; 
+            font-weight: bold; border-radius: 5px; cursor: pointer; transition: 0.3s;
+        }
+        button:hover { background: #00c853; transform: scale(1.02); }
+
+        /* Tabla con scroll mejorado */
+        .scroll-table { 
+            flex-grow: 1; height: 380px; overflow-y: auto; 
+            margin-top: 20px; border: 1px solid #333; border-radius: 5px;
+        }
+        table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 13px; }
+        th { background: #252525; padding: 10px; position: sticky; top: 0; color: #888; }
+        td { padding: 8px; text-align: center; border-bottom: 1px solid #2d2d2d; }
+        
+        /* Canvas */
+        canvas { background: #000; border: 1px solid #333; border-radius: 8px; }
+    </style>
 </head>
 <body>
-    <h2>Algoritmo de Bresenham</h2>
-    <label>x0:</label><input type="number" id="x0"><br>
-<label>y0:</label><input type="number" id="y0"><br>
-<label>x1:</label><input type="number" id="x1"><br>
-<label>y1:</label><input type="number" id="y1"><br>
-<canvas id="canvas" width="400" height="400" style="border:1px solid black;"></canvas>
-<h3>Tabla</h3>
-<table borde="1" id="tabla">
-<tr><th>x</th><th>y</th><th>err</th></tr>
-</table>
-<button onclick="dibujar()">Dibujar</button>
-<script src="script.js"></script>
+    <div class="main-container">
+        <div class="panel">
+            <h2>BRESENHAM</h2>
+            <div class="input-group">
+                <label>Punto Inicial (X0, Y0)</label>
+                <input type="number" id="x0" value="50">
+                <input type="number" id="y0" value="50">
+            </div>
+            <div class="input-group">
+                <label>Punto Final (X1, Y1)</label>
+                <input type="number" id="x1" value="550">
+                <input type="number" id="y1" value="500">
+            </div>
+            <button onclick="dibujar()">GENERAR TRAZO</button>
+            
+            <div class="scroll-table">
+                <table id="tabla">
+                    <thead><tr><th>X</th><th>Y</th><th>Error</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <canvas id="canvas" width="600" height="600"></canvas>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
